@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
