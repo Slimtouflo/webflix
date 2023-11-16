@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home', [
-        'name' => 'Fiorella',
+        'name'  => 'Fiorella',
         'games' => [
             'Elden Ring',
             'Call of Duty',
@@ -30,11 +30,31 @@ Route::get('/', function () {
 // {friend?} = Paramètre optionnel
 Route::get('/fiorella/{friend?}', function (Request $request, $friend = null) {
     // dump($friend);
-    dump($_GET); // Interdit avec Laravel
-    dump($request->color); // $_GET['color'] ?? null;
+    //dump($_GET); // Interdit avec Laravel
+    //dump($request->color); // $_GET['color'] ?? null;
     return view('presentation', [
-        'age' => Carbon::parse('2019-12-31')->age,
+        'age'    => Carbon::parse('2019-12-31')->age,
         'friend' => ucfirst($friend),
-        'color' => $request->color,
+        'color'  => $request->color,
     ]);
 });
+
+Route::get('/a-propos', function() {
+    return view('a-propos', [
+        'title' => 'Les devs',
+        'team'  => [
+            [
+                'name'  => 'Fiorella',
+                'job'   => 'CEO',
+                'image' => 'https://i.pravatar.cc/100?u=remi'
+            ],
+            [
+                'name'  => 'Toto',
+                'job'   => 'CTO',
+                'image' => 'https://i.pravatar.cc/100?u=patrick'
+            ],
+        ]
+    ]);
+});
+
+
