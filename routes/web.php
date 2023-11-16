@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,46 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        'name'  => 'Fiorella',
-        'games' => [
-            'Elden Ring',
-            'Call of Duty',
-            'FC 24',
-        ]
-    ]);
-});
+Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/fiorella/{friend?}', [HomeController::class, 'friend']);
+
+Route::get('/a-propos', [AboutController::class, 'index']);
+
+
+
 
 // {friend} = Paramètre obligatoire
 // {friend?} = Paramètre optionnel
-Route::get('/fiorella/{friend?}', function (Request $request, $friend = null) {
-    // dump($friend);
-    //dump($_GET); // Interdit avec Laravel
-    //dump($request->color); // $_GET['color'] ?? null;
-    return view('presentation', [
-        'age'    => Carbon::parse('2019-12-31')->age,
-        'friend' => ucfirst($friend),
-        'color'  => $request->color,
-    ]);
-});
 
-Route::get('/a-propos', function() {
-    return view('a-propos', [
-        'title' => 'Les devs',
-        'team'  => [
-            [
-                'name'  => 'Fiorella',
-                'job'   => 'CEO',
-                'image' => 'https://i.pravatar.cc/100?u=remi'
-            ],
-            [
-                'name'  => 'Toto',
-                'job'   => 'CTO',
-                'image' => 'https://i.pravatar.cc/100?u=patrick'
-            ],
-        ]
-    ]);
-});
-
-
+// dump($friend);
+//dump($_GET); // Interdit avec Laravel
+//dump($request->color); // $_GET['color'] ?? null;
