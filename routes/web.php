@@ -21,7 +21,7 @@ Route::get('/fiorella/{friend?}', [HomeController::class, 'friend']);
 
 Route::get('/a-propos', [AboutController::class, 'index']);
 
-
+Route::get('/a-propos/{user}', [AboutController::class, 'show']);
 
 
 // {friend} = Paramètre obligatoire

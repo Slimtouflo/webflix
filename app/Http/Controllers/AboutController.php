@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class AboutController extends Controller
 {
     public function index()
@@ -22,6 +20,17 @@ class AboutController extends Controller
                     'image' => 'https://i.pravatar.cc/100?u=patrick'
                 ],
             ]
+        ]);
+    }
+
+    public function show($user)
+    {
+        if (! in_array($user, ['Fiorella', 'Toto'])) {
+            abort(404); // Renvoie une 404
+        }
+
+        return view('about-show', [
+            'user' => $user,
         ]);
     }
 }
