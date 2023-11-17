@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,9 @@ Route::get('/fiorella/{friend?}', [HomeController::class, 'friend']);
 Route::get('/a-propos', [AboutController::class, 'index']);
 
 Route::get('/a-propos/{user}', [AboutController::class, 'show']);
+
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories/creer', [CategoryController::class, 'create']);
 
 
 // {friend} = Paramètre obligatoire
