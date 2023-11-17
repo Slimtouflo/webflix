@@ -24,8 +24,12 @@ Route::get('/a-propos', [AboutController::class, 'index']);
 
 Route::get('/a-propos/{user}', [AboutController::class, 'show']);
 
+// CRUD categories
 Route::get('/categories', [CategoryController::class, 'index']);
+// Afficher le form
 Route::get('/categories/creer', [CategoryController::class, 'create']);
+// Traiter le form
+Route::post('/categories/creer', [CategoryController::class, 'store']);
 
 
 // {friend} = Paramètre obligatoire

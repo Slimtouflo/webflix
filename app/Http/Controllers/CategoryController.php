@@ -18,6 +18,11 @@ class CategoryController extends Controller
 
     public function create()
     {
+        return view('categories/create');
+    }
+
+    public function store()
+    {
         // Insertion en BDD
         $category = new Category();
         $category->name = 'Action';
