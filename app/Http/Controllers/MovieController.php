@@ -29,7 +29,7 @@ class MovieController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'       => 'required|unique:movies|min:3',
+            'title'       => 'required|min:3',
             'synopsys'    => 'required|min:10',
             'duration'    => 'required|min:0',
             'youtube'     => '',
@@ -44,6 +44,7 @@ class MovieController extends Controller
         $movie->youtube = $request->youtube;
         $movie->cover = $request->cover;
         $movie->released_at = $request->released_at;
+        $movie->category_id = $request->category_id;
         $movie->save();
 
         return redirect('/films');

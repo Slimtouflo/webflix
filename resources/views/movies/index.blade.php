@@ -8,11 +8,13 @@
         @foreach ($movies as $movie)
             <div>
                 <a href="/films/{{$movie->id}}"><h2> {{ $movie->title }} </h2></a>
+                <img src="{{$movie->cover}}" alt="">
                 <ul>
                     <li>Synopsis : {{ $movie->synopsys }} </li>
                     <li>Durée : {{ $movie->duration }}min </li>
                     <li>Lien Bande-annonce : {{ $movie->youtube }} </li>
                     <li>Date de sortie : {{ $movie->released_at }} </li>
+                    <li>Catégorie : {{ $movie->category_id }}</li>
                 </ul>
             </div>
         @endforeach
