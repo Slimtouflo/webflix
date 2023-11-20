@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,11 +18,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-
 Route::get('/fiorella/{friend?}', [HomeController::class, 'friend']);
 
 Route::get('/a-propos', [AboutController::class, 'index']);
-
 Route::get('/a-propos/{user}', [AboutController::class, 'show']);
 
 // CRUD categories
@@ -30,6 +29,12 @@ Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/categories/creer', [CategoryController::class, 'create']);
 // Traiter le form
 Route::post('/categories/creer', [CategoryController::class, 'store']);
+
+Route::get('/films', [MovieController::class, 'index']);
+Route::get('/films/creer', [MovieController::class, 'create']);
+Route::post('/films/creer', [MovieController::class, 'store']);
+Route::get('/films/{id}', [MovieController::class, 'show']);
+
 
 
 // {friend} = Paramètre obligatoire
