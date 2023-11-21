@@ -86,4 +86,11 @@ class MovieController extends Controller
 
         return redirect('/films');
     }
+
+    public function destroy($id)
+    {
+        Movie::destroy($id);
+
+        return redirect('/films');
+    }
 }
