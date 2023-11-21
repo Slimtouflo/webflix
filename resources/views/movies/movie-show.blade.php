@@ -1,18 +1,21 @@
-@extends('layouts/app')
+@extends('layouts.app')
 
 @section('content')
-<div>
-        <div>
-            <h1> {{ $movie->title }} </h1>
-            <img src="{{$movie->cover}}" alt="">
-            <ul>
-                <li>Synopsis : {{ $movie->synopsys }} </li>
-                <li>Durée : {{ $movie->duration }}min </li>
-                <li>Lien Bande-annonce : {{ $movie->youtube }} </li>
-                <li>Date de sortie : {{ $movie->released_at }} </li>
-                <li>Catégorie : {{ $movie->category_id }}</li>
-            </ul>
+    <a href="/films" class="text-gray-500">Retour aux films</a>
+    <div class="flex">
+        <div class="w-1/2">
+            <img class="w-32" src="{{ $movie->cover }}" alt="{{ $movie->title }}">
         </div>
-    
-</div>
+        <div class="w-1/2">
+            <h1>{{ $movie->title }}</h1>
+            <p>{{ $movie->synopsys }}</p>
+            <p>Durée: {{ $movie->duration }}</p>
+            @if ($movie->released_at)
+                <p>Sortie: {{ $movie->released_at }}</p>
+            @endif
+            @if ($movie->category_id)
+                <p>Catégorie: {{ $movie->category_id }}</p>
+            @endif
+        </div>
+    </div>
 @endsection
