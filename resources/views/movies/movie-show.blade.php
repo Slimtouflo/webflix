@@ -2,19 +2,28 @@
 
 @section('content')
     <a href="/films" class="text-gray-500">Retour aux films</a>
-    <div class="flex">
-        <div class="w-1/2">
-            <img class="w-32" src="{{ $movie->cover }}" alt="{{ $movie->title }}">
+    <div class="flex gap-10 items-center">
+        <div class="w-2/5">
+            <img class="w-full" src="{{ $movie->cover }}" alt="{{ $movie->title }}">
         </div>
-        <div class="w-1/2">
-            <h1>{{ $movie->title }}</h1>
-            <p>{{ $movie->synopsys }}</p>
-            <p>Durée: {{ $movie->duration }}</p>
-            @if ($movie->released_at)
-                <p>Sortie: {{ $movie->released_at }}</p>
-            @endif
-            @if ($movie->category_id)
-                <p>Catégorie: {{ $movie->category_id }}</p>
+        <div class="w-3/5">
+            <div class="border p-4 shadow-lg">
+                <h1 class="text-3xl">{{ $movie->title }}</h1>
+                <p class="my-3">{{ $movie->synopsys }}</p>
+                <p class="text-sm">
+                    @if ($movie->released_at)
+                        {{$movie->released_at->diffForHumans() }} |
+                        {{$movie->released_at->translatedformat('d F Y') }} |
+                    @endif
+                    @if ($movie->category_id)
+                        {{$movie->category->name}} |
+                    @endif
+                    {{$movie->duration()}}
+                </p>
+            </div>
+
+            @if ($movie->youtube)   
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{$movie->youtube}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             @endif
         </div>
     </div>
